@@ -1,0 +1,28 @@
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  export-android:
+    name: Android Export
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Godot Android Export
+        uses: dularion/godot-build-action@v1.3.0
+        with:
+          godot_version: 4.2.1
+          platform: android
+          export_debug: true
+          project_directory: '.'
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: Android-APK
+          path: '**.apk'
