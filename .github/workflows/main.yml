@@ -4,29 +4,25 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   export-android:
     name: Android Export
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Export Templates
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates
-          mv /root/.local/share/godot/export_templates/4.2.1.stable ~/.local/share/godot/export_templates/4.2.1.stable
-
-      - name: Build APK
-        run: |
-          mkdir -p build
-          godot --headless --export-debug "Android" build/game.apk
+      - name: Godot Android Export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_version: 4.2.1
+          export_debug: true
+          relative_project_path: ./
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Android-APK
-          path: build/game.apk
+          path: build/
