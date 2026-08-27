@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/SettingsMenu.gd" id="1"]
+
+[node name="Settings" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -240.0
+offset_right = 260.0
+offset_bottom = 240.0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox"]
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="VBox"]
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Panel"]
+theme_override_constants/separation = 22
+custom_minimum_size = Vector2(440, 0)
+
+[node name="MusicRow" type="HBoxContainer" parent="VBox/Panel/VBox"]
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="VBox/Panel/VBox/MusicRow"]
+text = "Music Volume"
+custom_minimum_size = Vector2(180, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="MusicSlider" type="HSlider" parent="VBox/Panel/VBox/MusicRow"]
+size_flags_horizontal = 3
+
+[node name="SfxRow" type="HBoxContainer" parent="VBox/Panel/VBox"]
+theme_override_constants/separation = 16
+
+[node name="SfxLabel" type="Label" parent="VBox/Panel/VBox/SfxRow"]
+text = "SFX Volume"
+custom_minimum_size = Vector2(180, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="SfxSlider" type="HSlider" parent="VBox/Panel/VBox/SfxRow"]
+size_flags_horizontal = 3
+
+[node name="JumpRow" type="HBoxContainer" parent="VBox/Panel/VBox"]
+theme_override_constants/separation = 16
+
+[node name="JumpLabel" type="Label" parent="VBox/Panel/VBox/JumpRow"]
+text = "Jump Sensitivity"
+custom_minimum_size = Vector2(180, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="JumpSlider" type="HSlider" parent="VBox/Panel/VBox/JumpRow"]
+size_flags_horizontal = 3
+
+[node name="ThemeRow" type="HBoxContainer" parent="VBox/Panel/VBox"]
+theme_override_constants/separation = 16
+
+[node name="ThemeLabel" type="Label" parent="VBox/Panel/VBox/ThemeRow"]
+text = "Dark Theme"
+custom_minimum_size = Vector2(180, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="ThemeToggle" type="CheckButton" parent="VBox/Panel/VBox/ThemeRow"]
+
+[node name="BackButton" type="Button" parent="VBox"]
+size_flags_horizontal = 4
+text = "Back"

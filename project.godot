@@ -1,0 +1,56 @@
+; Aura - Godot 4.x project file
+
+config_version=5
+
+[application]
+
+config/name="Aura"
+config/description="A snowboarding endless-adventure runner inspired by Alto's Adventure."
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.101961, 0.101961, 0.180392, 1)
+config/icon="res://icon.svg"
+
+[autoload]
+
+SaveManager="*res://autoload/SaveManager.gd"
+SoundManager="*res://autoload/SoundManager.gd"
+LevelManager="*res://autoload/LevelManager.gd"
+GameManager="*res://autoload/GameManager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation="landscape"
+window/energy_saving/keep_screen_on=true
+
+[input]
+
+tap={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(0,0),"global_position":Vector2(0,0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+
+[physics]
+
+2d/default_gravity=1800
+common/physics_ticks_per_second=60
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.101961, 0.101961, 0.180392, 1)
+
+[android]
+
+xr_features/enable=false
