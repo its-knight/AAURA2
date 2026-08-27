@@ -14,15 +14,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Godot Android Export
+      - name: Export Godot Android
         uses: firebelley/godot-export@v6.0.0
         with:
           godot_version: 4.2.1
           export_debug: true
           relative_project_path: ./
+          archive_output: true
 
-      - name: Upload APK
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Android-APK
-          path: build/
+          path: /home/runner/work/AAURA2/AAURA2/build/
