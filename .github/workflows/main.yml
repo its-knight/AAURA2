@@ -10,24 +10,19 @@ jobs:
   export-android:
     name: Android Export
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Export Templates
-        run: |
-          mkdir -p ~/.local/share/godot/export_templates
-          mv /root/.local/share/godot/export_templates/4.2.1.stable ~/.local/share/godot/export_templates/4.2.1.stable
+      - name: Godot Android Export
+        uses: chickensoft-games/godot-export@v1
+        with:
+          godot-version: 4.2.1
+          platform: android
+          export-type: debug
 
-      - name: Export APK
-        run: |
-          mkdir -p build
-          godot --headless --export-debug "Android" build/Aura.apk
-
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Android-APK
-          path: build/Aura.apk
+          path: '**/*.apk'
